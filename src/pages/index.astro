@@ -1,11 +1,470 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Galaxia from '../components/Galaxia.astro';
+import ProyectoCard from '../components/ProyectoCard.astro';
+import { proyectos, divulgacion, experiencia, formacion } from '../data/proyectos';
 ---
 
 <Layout>
-	<Welcome />
+	<main>
+		<section class="hero">
+			<div class="hero-content">
+				<p class="eyebrow">INGENIERÍA · DATOS · CIENCIA</p>
+
+				<h1>
+					SOFÍA
+					<span>AGUAYO</span>
+				</h1>
+
+				<p class="subtitulo">Ingeniera Física · Astrónoma</p>
+
+				<p class="descripcion">Datos · Machine Learning · Computación científica</p>
+
+				<p class="intro">
+					Construyo soluciones basadas en datos en el cruce entre la ciencia, el
+					software y la resolución analítica de problemas. Últimamente, enseñándole
+					a un satélite a reconocer el cielo.
+				</p>
+
+				<div class="botones">
+					<a class="boton primario" href="#proyectos">Ver mis proyectos</a>
+					<a class="boton secundario" href="/CV-Sofia-Aguayo.pdf">Descargar CV</a>
+				</div>
+			</div>
+
+			<Galaxia />
+		</section>
+
+		<section class="seccion" id="proyectos">
+			<p class="etiqueta">Proyectos</p>
+			<h2 class="seccion-titulo">En qué he estado trabajando</h2>
+			<p class="seccion-bajada">
+				Una selección de proyectos donde el análisis de datos se encuentra con
+				problemas reales: desde orientación satelital hasta proyección de ventas.
+			</p>
+
+			<div class="grilla-proyectos">
+				{proyectos.map((p, i) => <ProyectoCard proyecto={p} indice={i} />)}
+			</div>
+		</section>
+
+		<section class="seccion" id="docencia">
+			<p class="etiqueta">Docencia y divulgación</p>
+			<h2 class="seccion-titulo">Explicar también es parte del trabajo</h2>
+			<p class="seccion-bajada">
+				Me gusta el momento en que algo que parecía imposible de pronto se entiende.
+				Por eso hago ayudantías y, cuando el tiempo acompaña, divulgación.
+			</p>
+
+			<div class="grilla-docencia">
+				{
+					divulgacion.map((d) => (
+						<article class="ficha">
+							<div class="ficha-meta">
+								<span>{d.periodo}</span>
+								{d.estado && <span class="estado">{d.estado}</span>}
+							</div>
+							<h3>{d.titulo}</h3>
+							<p>{d.resumen}</p>
+							{d.enlace && (
+								<a href={d.enlace.href} target="_blank" rel="noopener noreferrer">
+									{d.enlace.texto}
+									<span aria-hidden="true">→</span>
+								</a>
+							)}
+						</article>
+					))
+				}
+			</div>
+		</section>
+
+		<section class="seccion" id="experiencia">
+			<p class="etiqueta">Trayectoria</p>
+			<h2 class="seccion-titulo">Dónde he estado</h2>
+
+			<ol class="linea-tiempo">
+				{
+					experiencia.map((h) => (
+						<li>
+							<span class="punto" aria-hidden="true" />
+							<div class="contenido">
+								<span class="periodo">{h.periodo}</span>
+								<h3>{h.rol}</h3>
+								<p class="lugar">{h.lugar}</p>
+								<p class="detalle">{h.descripcion}</p>
+							</div>
+						</li>
+					))
+				}
+			</ol>
+
+			<div class="formacion">
+				<p class="formacion-titulo">Formación complementaria</p>
+				<ul>
+					{
+						formacion.map((f) => (
+							<li>
+								<span class="formacion-nombre">{f.titulo}</span>
+								<span class="formacion-lugar">
+									{f.lugar} · {f.periodo}
+								</span>
+							</li>
+						))
+					}
+				</ul>
+			</div>
+		</section>
+
+		<section class="seccion" id="contacto">
+			<p class="etiqueta">Contacto</p>
+			<h2 class="seccion-titulo">Conversemos</h2>
+			<p class="seccion-bajada">
+				Estoy abierta a oportunidades en análisis de datos, machine learning y
+				software científico. También a hablar de satélites sin ningún motivo en
+				particular.
+			</p>
+
+			<ul class="contactos">
+				<li>
+					<span class="clave">Correo</span>
+					<a href="mailto:aifos.aguayo@gmail.com">aifos.aguayo@gmail.com</a>
+				</li>
+				<li>
+					<span class="clave">LinkedIn</span>
+					<a
+						href="https://www.linkedin.com/in/sofia-carolina-aguayo-vidal"
+						target="_blank"
+						rel="noopener noreferrer">sofia-carolina-aguayo-vidal</a
+					>
+				</li>
+				<li>
+					<span class="clave">GitHub</span>
+					<a href="https://github.com/Sofia-Aguayo" target="_blank" rel="noopener noreferrer"
+						>Sofia-Aguayo</a
+					>
+				</li>
+				<li>
+					<span class="clave">Instagram</span>
+					<a
+						href="https://www.instagram.com/astroredd/"
+						target="_blank"
+						rel="noopener noreferrer">@astroredd</a
+					>
+				</li>
+			</ul>
+		</section>
+	</main>
 </Layout>
+
+<style>
+	.hero {
+		position: relative;
+		z-index: 1;
+		width: var(--ancho);
+		min-height: calc(100vh - 5rem);
+		margin: 0 auto;
+		display: flex;
+		align-items: center;
+		padding: 4rem 0;
+	}
+
+	.hero-content {
+		max-width: 760px;
+		position: relative;
+		z-index: 2;
+	}
+
+	.eyebrow {
+		margin: 0 0 1.4rem;
+		color: var(--accent);
+		font-size: 0.78rem;
+		font-weight: 600;
+		letter-spacing: 0.22em;
+	}
+
+	h1 {
+		margin: 0;
+		font-family: var(--font-body);
+		font-size: clamp(3.5rem, 9vw, 7.5rem);
+		font-weight: 700;
+		line-height: 0.88;
+		letter-spacing: -0.05em;
+	}
+
+	h1 span {
+		display: block;
+		color: var(--accent);
+	}
+
+	.subtitulo {
+		margin: 2rem 0 0.4rem;
+		font-size: 1.3rem;
+		font-weight: 500;
+		color: #f7f3ff;
+	}
+
+	.descripcion {
+		margin: 0;
+		color: var(--dim);
+		font-size: 1rem;
+	}
+
+	.intro {
+		max-width: 560px;
+		margin-top: 2rem;
+		color: var(--muted);
+		font-size: 1rem;
+		line-height: 1.75;
+	}
+
+	.botones {
+		margin-top: 2.2rem;
+		display: flex;
+		gap: 1rem;
+		flex-wrap: wrap;
+	}
+
+	.boton {
+		display: inline-block;
+		padding: 0.9rem 1.4rem;
+		border-radius: 999px;
+		text-decoration: none;
+		font-size: 0.9rem;
+		font-weight: 600;
+		transition: transform 0.2s ease;
+	}
+
+	.boton:hover {
+		transform: translateY(-2px);
+	}
+
+	.primario {
+		background: #aa7cff;
+		color: #100817;
+	}
+
+	.secundario {
+		color: #eee8f8;
+		border: 1px solid rgba(200, 180, 255, 0.3);
+		background: rgba(255, 255, 255, 0.03);
+	}
+
+	/* --- Proyectos --- */
+	.grilla-proyectos {
+		display: grid;
+		gap: 1.5rem;
+	}
+
+	/* --- Docencia --- */
+	.grilla-docencia {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+		gap: 1.5rem;
+	}
+
+	.ficha {
+		padding: 1.8rem;
+		border: 1px solid var(--surface-line);
+		border-radius: 18px;
+		background: var(--surface);
+	}
+
+	.ficha-meta {
+		display: flex;
+		align-items: center;
+		gap: 0.7rem;
+		flex-wrap: wrap;
+		color: var(--dim);
+		font-size: 0.76rem;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+	}
+
+	.estado {
+		padding: 0.2rem 0.6rem;
+		border: 1px solid rgba(255, 180, 120, 0.3);
+		border-radius: 999px;
+		color: #f3c08a;
+		font-size: 0.68rem;
+	}
+
+	.ficha h3 {
+		margin: 0.7rem 0 0.7rem;
+		font-size: 1.35rem;
+		line-height: 1.25;
+	}
+
+	.ficha p {
+		margin: 0;
+		color: var(--muted);
+		font-size: 0.93rem;
+	}
+
+	.ficha a {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.45rem;
+		margin-top: 1.1rem;
+		color: var(--accent);
+		text-decoration: none;
+		font-size: 0.86rem;
+		font-weight: 600;
+	}
+
+	.ficha a:hover {
+		text-decoration: underline;
+		text-underline-offset: 4px;
+	}
+
+	/* --- Línea de tiempo --- */
+	.linea-tiempo {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		position: relative;
+	}
+
+	.linea-tiempo::before {
+		content: '';
+		position: absolute;
+		left: 5px;
+		top: 8px;
+		bottom: 8px;
+		width: 1px;
+		background: linear-gradient(
+			180deg,
+			rgba(181, 140, 255, 0.5),
+			rgba(181, 140, 255, 0.05)
+		);
+	}
+
+	.linea-tiempo li {
+		position: relative;
+		padding-left: 2.2rem;
+		padding-bottom: 2.8rem;
+	}
+
+	.linea-tiempo li:last-child {
+		padding-bottom: 0;
+	}
+
+	.punto {
+		position: absolute;
+		left: 0;
+		top: 7px;
+		width: 11px;
+		height: 11px;
+		border-radius: 999px;
+		background: var(--accent);
+		box-shadow: 0 0 10px rgba(181, 140, 255, 0.7);
+	}
+
+	.linea-tiempo .periodo {
+		color: var(--dim);
+		font-size: 0.78rem;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+	}
+
+	.linea-tiempo h3 {
+		margin: 0.4rem 0 0.2rem;
+		font-size: 1.4rem;
+		line-height: 1.25;
+	}
+
+	.lugar {
+		margin: 0 0 0.7rem;
+		color: var(--accent);
+		font-size: 0.92rem;
+	}
+
+	.detalle {
+		margin: 0;
+		max-width: 65ch;
+		color: var(--muted);
+		font-size: 0.95rem;
+	}
+
+	/* --- Formación complementaria --- */
+	.formacion {
+		margin-top: 3rem;
+		padding-top: 2rem;
+		border-top: 1px solid rgba(200, 180, 255, 0.1);
+	}
+
+	.formacion-titulo {
+		margin: 0 0 1.2rem;
+		color: var(--dim);
+		font-size: 0.74rem;
+		letter-spacing: 0.16em;
+		text-transform: uppercase;
+	}
+
+	.formacion ul {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		display: grid;
+		gap: 0.9rem;
+	}
+
+	.formacion li {
+		display: flex;
+		flex-direction: column;
+		gap: 0.2rem;
+	}
+
+	.formacion-nombre {
+		color: var(--text);
+		font-size: 1rem;
+	}
+
+	.formacion-lugar {
+		color: var(--dim);
+		font-size: 0.86rem;
+	}
+
+	/* --- Contacto --- */
+	.contactos {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+		gap: 1.2rem;
+	}
+
+	.contactos li {
+		padding: 1.3rem 1.5rem;
+		border: 1px solid var(--surface-line);
+		border-radius: 14px;
+		background: var(--surface);
+	}
+
+	.clave {
+		display: block;
+		margin-bottom: 0.4rem;
+		color: var(--dim);
+		font-size: 0.72rem;
+		letter-spacing: 0.16em;
+		text-transform: uppercase;
+	}
+
+	.contactos a {
+		color: var(--text);
+		text-decoration: none;
+		font-size: 0.95rem;
+		word-break: break-word;
+	}
+
+	.contactos a:hover {
+		color: var(--accent);
+	}
+
+	@media (max-width: 900px) {
+		.hero {
+			min-height: auto;
+			padding: 5rem 0 6rem;
+		}
+	}
+</style>

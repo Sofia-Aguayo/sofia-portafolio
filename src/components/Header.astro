@@ -1,0 +1,105 @@
+---
+const enlaces = [
+	{ texto: 'Proyectos', href: '/#proyectos' },
+	{ texto: 'Docencia', href: '/#docencia' },
+	{ texto: 'Experiencia', href: '/#experiencia' },
+	{ texto: 'Sobre mí', href: '/sobre-mi' },
+	{ texto: 'Contacto', href: '/#contacto' }
+];
+---
+
+<header class="site-header">
+	<div class="interior">
+		<a class="marca" href="/">
+			<span class="sigla">SA.</span>
+		</a>
+
+		<nav class="navegacion" aria-label="Navegación principal">
+			{enlaces.map((e) => <a href={e.href}>{e.texto}</a>)}
+		</nav>
+	</div>
+</header>
+
+<style>
+	.site-header {
+		position: sticky;
+		top: 0;
+		z-index: 50;
+		backdrop-filter: blur(14px);
+		background: rgba(9, 6, 17, 0.62);
+		border-bottom: 1px solid rgba(200, 180, 255, 0.08);
+	}
+
+	.interior {
+		width: var(--ancho);
+		margin: 0 auto;
+		padding: 1.1rem 0;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		gap: 1.5rem;
+		flex-wrap: wrap;
+	}
+
+	.marca {
+		color: var(--text);
+		text-decoration: none;
+	}
+
+	.sigla {
+		font-size: 1.05rem;
+		font-weight: 700;
+		letter-spacing: 0.15em;
+	}
+
+	.navegacion {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 1.6rem;
+	}
+
+	.navegacion a {
+		position: relative;
+		color: var(--dim);
+		text-decoration: none;
+		font-size: 0.88rem;
+		transition: color 0.2s ease;
+	}
+
+	.navegacion a::after {
+		content: '';
+		position: absolute;
+		left: 0;
+		right: 0;
+		bottom: -5px;
+		height: 1px;
+		background: var(--accent);
+		transform: scaleX(0);
+		transform-origin: left;
+		transition: transform 0.25s ease;
+	}
+
+	.navegacion a:hover {
+		color: var(--text);
+	}
+
+	.navegacion a:hover::after {
+		transform: scaleX(1);
+	}
+
+	@media (max-width: 620px) {
+		.interior {
+			justify-content: center;
+			padding: 0.9rem 0;
+		}
+
+		.navegacion {
+			gap: 1.1rem;
+			justify-content: center;
+		}
+
+		.navegacion a {
+			font-size: 0.82rem;
+		}
+	}
+</style>

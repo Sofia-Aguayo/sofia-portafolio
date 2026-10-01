@@ -1,0 +1,264 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Amuleto from '../components/Amuleto.astro';
+---
+
+<Layout
+	title="Sobre mí | Sofía Aguayo"
+	description="Quién soy fuera del CV: astronomía, docencia, un cuy llamado Thor y las cosas que me mueven."
+>
+	<main>
+		<section class="seccion intro-seccion">
+			<p class="etiqueta">Sobre mí</p>
+			<h1 class="seccion-titulo">Quién soy cuando no es un CV</h1>
+
+			<div class="prosa">
+				<p>
+					Soy Sofía. Estudié Ingeniería Física, Física Aplicada y Astronomía en la
+					Universidad Andrés Bello. Entré queriendo estudiar estrellas y en el
+					camino me di cuenta de que lo que más me gustaba era otra cosa: los datos.
+				</p>
+
+				<p>
+					Me pasó trabajando. Estuve en un laboratorio enseñándole a un satélite a
+					reconocer el cielo, y en una empresa armando un modelo para proyectar
+					ventas. Dos mundos bien distintos, pero el trabajo era parecido: ordenar
+					lo desordenado, descartar lo que parecía una señal y no lo era, y
+					automatizar lo que se repetía. Esa parte, la que nadie muestra, resultó
+					ser la que más disfruto.
+				</p>
+
+				<p>
+					La astronomía me sigue gustando mucho —hasta hace poco estuve buscando
+					emisores Lyman-α en cubos de datos—, pero lo que aprendí ahí ahora quiero
+					llevarlo a la industria. Mientras tanto hago ayudantías de Cálculo
+					Integral y tengo una cuenta de divulgación científica que algún día voy a
+					retomar.
+				</p>
+
+				<p>
+					Lo demás: tomo mucho café, me dan curiosidad los bichos —probablemente por
+					eso juego tanto Hollow Knight—, me gustan los búhos, y tuve un cuy llamado
+					Thor que me acompañó toda la carrera.
+				</p>
+			</div>
+		</section>
+
+		<section class="seccion">
+			<p class="etiqueta">Amuletos</p>
+			<h2 class="seccion-titulo">Las cosas que llevo conmigo</h2>
+			<p class="seccion-bajada">
+				Objetos pequeños que explican bastante mejor que un párrafo formal desde
+				dónde miro las cosas.
+			</p>
+
+			<div class="grilla-amuletos">
+				<Amuleto
+					titulo="Thor"
+					texto="Mi cuy. Me acompañó toda la carrera, noche de estudio tras noche de estudio. Este año ya no está."
+					memoria
+				>
+					<svg viewBox="0 0 48 48" role="img" aria-label="Ilustración de un cuy">
+						<path
+							data-trazo
+							d="M8 29.5 C8 24 12.5 20 18.5 19.5 C25 18 34.5 18.5 39 22.5 C43 26 43 32.5 38.5 35.5 C33.5 38.3 14.5 38.3 11 35.5 C9 33.8 8 31.5 8 29.5 Z"
+						></path>
+						<path data-trazo d="M19.5 20 C18.5 15 23 13.2 24.8 16.2 C26 18.2 24 20 21.5 20.3"></path>
+						<circle data-relleno cx="14" cy="26.5" r="1.8"></circle>
+						<circle data-relleno cx="8.4" cy="29.5" r="1.1"></circle>
+						<path data-trazo d="M18 37.8 L18 40.5"></path>
+						<path data-trazo d="M30 37.8 L30 40.5"></path>
+					</svg>
+				</Amuleto>
+
+				<Amuleto
+					titulo="La constelación"
+					texto="Puntos sin relación hasta que alguien decide unirlos. Mi trabajo se parece bastante a eso."
+				>
+					<svg viewBox="0 0 48 48" role="img" aria-label="Constelación de cuatro estrellas">
+						<path data-trazo d="M10 32 L20 13 L37 21 L29 38 Z"></path>
+						<path data-trazo d="M10 32 L37 21"></path>
+						<circle data-relleno cx="10" cy="32" r="2.6"></circle>
+						<circle data-relleno cx="20" cy="13" r="3"></circle>
+						<circle data-relleno cx="37" cy="21" r="2.3"></circle>
+						<circle data-relleno cx="29" cy="38" r="2.6"></circle>
+					</svg>
+				</Amuleto>
+
+				<Amuleto
+					titulo="El búho"
+					texto="Trabaja de noche y ve lo que los demás no. Buena parte de la astronomía es exactamente eso."
+				>
+					<svg viewBox="0 0 48 48" role="img" aria-label="Ilustración de un búho">
+						<path
+							data-trazo
+							d="M9 23 C9 17 11 13 14.5 10 L16.5 15 C18.5 13.3 21 12.5 24 12.5 C27 12.5 29.5 13.3 31.5 15 L33.5 10 C37 13 39 17 39 23 C39 33.5 32.5 41 24 41 C15.5 41 9 33.5 9 23 Z"
+						></path>
+						<circle data-trazo cx="18" cy="22" r="5"></circle>
+						<circle data-trazo cx="30" cy="22" r="5"></circle>
+						<circle data-relleno cx="18" cy="22" r="2"></circle>
+						<circle data-relleno cx="30" cy="22" r="2"></circle>
+						<path data-trazo d="M22 27 L24 30.5 L26 27"></path>
+					</svg>
+				</Amuleto>
+
+				<Amuleto
+					titulo="La integral"
+					texto="Tensa a media sala en la primera clase. Mi pega es que para diciembre ya no dé miedo."
+				>
+					<svg viewBox="0 0 48 48" role="img" aria-label="Símbolo de integral">
+						<path
+							data-trazo
+							d="M31 13 C31 8 26 7 25 12 C24 17 24 31 23 36 C22 41 17 40 17 35"
+						></path>
+						<path data-trazo d="M15 26 L33 22"></path>
+					</svg>
+				</Amuleto>
+
+				<Amuleto
+					titulo="El café"
+					texto="El combustible. Ninguna idea decente se me ha ocurrido sin una taza al lado."
+				>
+					<svg viewBox="0 0 48 48" role="img" aria-label="Ilustración de una taza de café">
+						<path data-trazo d="M9 19 L36 19"></path>
+						<path data-trazo d="M11 19 L13.5 37 Q14 40.5 18 40.5 L27 40.5 Q31 40.5 31.5 37 L34 19"></path>
+						<path data-trazo d="M34.5 23 C40.5 22 42 29.5 36 31.5"></path>
+						<path data-trazo d="M18 14 C20 11 16 9 18 5.5"></path>
+						<path data-trazo d="M27 14 C29 11 25 9 27 5.5"></path>
+					</svg>
+				</Amuleto>
+
+				<Amuleto
+					titulo="El computador"
+					texto="Donde pasa todo: el código, los datos y los gráficos que por fin dicen algo."
+				>
+					<svg viewBox="0 0 48 48" role="img" aria-label="Ilustración de un computador portátil">
+						<rect data-trazo x="10" y="9" width="28" height="20" rx="2"></rect>
+						<path data-trazo d="M10 29 L38 29 L43 35.5 L5 35.5 Z"></path>
+						<path data-trazo d="M20.5 32.5 L27.5 32.5"></path>
+					</svg>
+				</Amuleto>
+
+				<Amuleto
+					titulo="El joystick"
+					texto="Los juegos me enseñaron a quedarme con un problema difícil hasta sacarlo."
+				>
+					<svg viewBox="0 0 48 48" role="img" aria-label="Ilustración de un control de videojuegos">
+						<path
+							data-trazo
+							d="M17 17 L31 17 C37.5 17 42.5 23 43 29.5 C43.4 34.5 40 37 37 35.8 C34.2 34.7 33 31 30.5 31 L17.5 31 C15 31 13.8 34.7 11 35.8 C8 37 4.6 34.5 5 29.5 C5.5 23 10.5 17 17 17 Z"
+						></path>
+						<path data-trazo d="M14 21.5 L14 27.5"></path>
+						<path data-trazo d="M11 24.5 L17 24.5"></path>
+						<circle data-relleno cx="31.5" cy="22.5" r="1.9"></circle>
+						<circle data-relleno cx="35.5" cy="26" r="1.9"></circle>
+					</svg>
+				</Amuleto>
+			</div>
+
+			<aside class="nota">
+				<p>
+					La idea de andar cargando amuletos me la robé de <strong>Hollow Knight</strong>.
+					Los dibujos de arriba son míos, hechos a mano para este sitio: lo único
+					prestado es la idea, que por suerte es lo único que se puede tomar sin
+					pedir permiso.
+				</p>
+			</aside>
+		</section>
+
+		<section class="seccion cierre">
+			<h2 class="seccion-titulo">¿Seguimos conversando?</h2>
+			<p class="seccion-bajada">
+				Si llegaste hasta acá, probablemente tengamos algo de qué hablar.
+			</p>
+			<a class="boton" href="/#contacto">Ir a contacto</a>
+		</section>
+	</main>
+</Layout>
+
+<style>
+	.intro-seccion {
+		padding-top: 5rem;
+	}
+
+	.intro-seccion .seccion-titulo {
+		margin-bottom: 2.5rem;
+	}
+
+	.prosa {
+		max-width: 62ch;
+	}
+
+	.prosa p {
+		margin: 0 0 1.4rem;
+		color: var(--muted);
+		font-size: 1.04rem;
+		line-height: 1.8;
+	}
+
+	/* Sin texto son compactos: caben todos en una fila y se reacomodan solos. */
+	.grilla-amuletos {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(128px, 1fr));
+		gap: 1rem;
+	}
+
+	@media (max-width: 1000px) {
+		.grilla-amuletos {
+			grid-template-columns: repeat(3, 1fr);
+		}
+	}
+
+	@media (max-width: 520px) {
+		.grilla-amuletos {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+
+	.nota {
+		max-width: 68ch;
+		margin: 3rem auto 0;
+		padding: 1.5rem 1.8rem;
+		border-left: 2px solid rgba(200, 180, 255, 0.3);
+		background: rgba(255, 255, 255, 0.02);
+		border-radius: 0 14px 14px 0;
+	}
+
+	.nota p {
+		margin: 0;
+		color: var(--dim);
+		font-size: 0.92rem;
+		line-height: 1.75;
+	}
+
+	.nota strong {
+		color: var(--muted);
+		font-weight: 600;
+	}
+
+	.cierre {
+		text-align: center;
+		padding-bottom: 7rem;
+	}
+
+	.cierre .seccion-bajada {
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	.boton {
+		display: inline-block;
+		padding: 0.9rem 1.6rem;
+		border-radius: 999px;
+		background: #aa7cff;
+		color: #100817;
+		text-decoration: none;
+		font-size: 0.9rem;
+		font-weight: 600;
+		transition: transform 0.2s ease;
+	}
+
+	.boton:hover {
+		transform: translateY(-2px);
+	}
+</style>

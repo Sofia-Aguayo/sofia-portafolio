@@ -1,0 +1,125 @@
+---
+interface Props {
+	titulo: string;
+	/** Descripción opcional: no se muestra, aparece al dejar el cursor encima. */
+	texto?: string;
+	/** Marca el amuleto con un tratamiento especial (p. ej. un recuerdo). */
+	memoria?: boolean;
+}
+
+const { titulo, texto, memoria = false } = Astro.props;
+---
+
+<article class:list={['amuleto', { memoria }]} title={texto}>
+	<div class="medallon">
+		<span class="halo" aria-hidden="true"></span>
+		<slot />
+	</div>
+
+	<h3>{titulo}</h3>
+</article>
+
+<style>
+	.amuleto {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+		padding: 1.6rem 0.8rem 1.3rem;
+		border: 1px solid var(--surface-line);
+		border-radius: 20px;
+		background: var(--surface);
+		transition:
+			border-color 0.3s ease,
+			transform 0.3s ease;
+	}
+
+	.amuleto:hover {
+		border-color: rgba(200, 180, 255, 0.3);
+		transform: translateY(-4px);
+	}
+
+	.medallon {
+		position: relative;
+		display: grid;
+		place-items: center;
+		width: 84px;
+		height: 84px;
+		margin-bottom: 1rem;
+		border-radius: 999px;
+		border: 1px solid rgba(200, 180, 255, 0.22);
+		background:
+			radial-gradient(circle at 50% 38%, rgba(181, 140, 255, 0.16), transparent 65%),
+			rgba(255, 255, 255, 0.02);
+	}
+
+	.halo {
+		position: absolute;
+		inset: -6px;
+		border-radius: 999px;
+		border: 1px solid rgba(200, 180, 255, 0.08);
+	}
+
+	/* El SVG llega por el <slot>. */
+	.medallon :global(svg) {
+		width: 44px;
+		height: 44px;
+		overflow: visible;
+	}
+
+	.medallon :global(svg [data-trazo]) {
+		fill: none;
+		stroke: #e6dcff;
+		stroke-width: 2;
+		stroke-linecap: round;
+		stroke-linejoin: round;
+	}
+
+	.medallon :global(svg [data-relleno]) {
+		fill: #e6dcff;
+		stroke: none;
+	}
+
+	.amuleto:hover .medallon :global(svg [data-trazo]) {
+		stroke: var(--accent);
+	}
+
+	.amuleto:hover .medallon :global(svg [data-relleno]) {
+		fill: var(--accent);
+	}
+
+	h3 {
+		margin: 0;
+		font-size: 1.08rem;
+		line-height: 1.25;
+		color: var(--muted);
+	}
+
+	.amuleto:hover h3 {
+		color: var(--text);
+	}
+
+	/* Amuleto en memoria: tono más cálido y tenue. */
+	.memoria .medallon {
+		border-color: rgba(255, 205, 150, 0.28);
+		background:
+			radial-gradient(circle at 50% 38%, rgba(255, 190, 130, 0.16), transparent 65%),
+			rgba(255, 255, 255, 0.02);
+	}
+
+	.memoria .medallon :global(svg [data-trazo]) {
+		stroke: #ffdcb0;
+	}
+
+	.memoria .medallon :global(svg [data-relleno]) {
+		fill: #ffdcb0;
+	}
+
+	.memoria:hover .medallon :global(svg [data-trazo]) {
+		stroke: #ffc78a;
+	}
+
+	.memoria:hover .medallon :global(svg [data-relleno]) {
+		fill: #ffc78a;
+	}
+</style>

@@ -1,0 +1,42 @@
+---
+const anio = new Date().getFullYear();
+---
+
+<footer class="pie">
+	<div class="interior">
+		<p class="firma">
+			Hecho con Astro, café y bastante cielo nocturno.
+		</p>
+		<p class="copia">© {anio} Sofía Aguayo Vidal</p>
+	</div>
+</footer>
+
+<style>
+	.pie {
+		position: relative;
+		z-index: 1;
+		border-top: 1px solid rgba(200, 180, 255, 0.08);
+		margin-top: 2rem;
+	}
+
+	.interior {
+		width: var(--ancho);
+		margin: 0 auto;
+		padding: 2.5rem 0;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		gap: 1rem;
+		flex-wrap: wrap;
+	}
+
+	p {
+		margin: 0;
+		color: var(--dim);
+		font-size: 0.82rem;
+	}
+
+	.firma {
+		font-style: italic;
+	}
+</style>
